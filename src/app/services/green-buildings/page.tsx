@@ -180,7 +180,7 @@ export default function GreenBuildingsPage() {
         </section>
 
         {/* CTA */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -192,7 +192,7 @@ export default function GreenBuildingsPage() {
           <Link href="/contact" className="inline-flex items-center gap-3 px-12 py-5 rounded-full border border-emerald-500 text-emerald-400 font-semibold text-lg hover:bg-emerald-500 hover:text-[#020805] transition-all duration-300 group shadow-[0_0_30px_rgba(16,185,129,0.1)]">
             Schedule a Consultation <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

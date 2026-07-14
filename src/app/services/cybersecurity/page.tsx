@@ -83,7 +83,7 @@ export default function CybersecurityServicePage() {
         </div>
 
         {/* CTA */}
-        <div className="text-center bg-primary/10 rounded-3xl p-12 border border-primary/20">
+        {/* <div className="text-center bg-primary/10 rounded-3xl p-12 border border-primary/20">
           <h2 className="text-3xl font-bold text-white mb-4">Secure Your Infrastructure Today</h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             Schedule a confidential briefing with our security architects to assess your current posture and design a resilient defense strategy.
@@ -94,7 +94,7 @@ export default function CybersecurityServicePage() {
           >
             Request Security Assessment
           </Link>
-        </div>
+        </div> */}
       </div>
     </div>
   );

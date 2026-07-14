@@ -188,7 +188,7 @@ export default function SoftwareHousePage() {
         </section>
 
         {/* CTA */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -199,7 +199,7 @@ export default function SoftwareHousePage() {
           <Link href="/contact" className="inline-flex items-center gap-3 px-10 py-5 bg-green-500 text-black text-lg font-bold rounded-xl hover:bg-green-400 hover:scale-105 transition-all shadow-[0_0_40px_rgba(0,255,128,0.3)]">
             Initialize Project <Rocket size={20} />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

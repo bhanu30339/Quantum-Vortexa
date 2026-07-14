@@ -167,7 +167,7 @@ export default function ITConsultingPage() {
         </section>
 
         {/* CTA */}
-        <motion.div 
+        {/* <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -178,7 +178,7 @@ export default function ITConsultingPage() {
           <Link href="/contact" className="inline-flex items-center gap-3 px-10 py-5 bg-white text-[#020617] text-lg font-bold rounded-full hover:bg-blue-50 hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)]">
             Schedule a Strategy Call <ChevronRight size={20} />
           </Link>
-        </motion.div>
+        </motion.div> */}
       </div>
     </div>
   );

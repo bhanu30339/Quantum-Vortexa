@@ -31,6 +31,20 @@ export default function Home() {
     },
   };
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      transition: { duration: 0.8, ease: "easeOut" as const, staggerChildren: 0.15 }
+    }
+  };
+
+  const childVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 20 } }
+  };
+
   return (
     <div className="flex flex-col w-full relative">
       {/* Hero Section */}
@@ -94,12 +108,18 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 relative">
-        <div className="container mx-auto px-6">
-          <div className="mb-16 text-center max-w-3xl mx-auto">
+      <section className="py-24 relative overflow-hidden">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="container mx-auto px-6"
+        >
+          <motion.div variants={childVariants} className="mb-16 text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Enterprise Capabilities</h2>
             <p className="text-gray-400 text-lg">Comprehensive technology solutions designed for scale, security, and performance across GCC markets.</p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -122,61 +142,76 @@ export default function Home() {
                 link: "/services/green-buildings"
               }
             ].map((service, index) => (
-              <Link key={index} href={service.link}>
-                <div className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group h-full backdrop-blur-sm">
-                  <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <service.icon className="w-6 h-6 text-primary" />
+              <motion.div variants={childVariants} key={index} className="h-full">
+                <Link href={service.link} className="block h-full">
+                  <div className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group h-full backdrop-blur-sm shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                    <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
+                    <p className="text-gray-400 mb-6">{service.description}</p>
+                    <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all gap-1">
+                      Learn more <ArrowRight className="w-4 h-4" />
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{service.title}</h3>
-                  <p className="text-gray-400 mb-6">{service.description}</p>
-                  <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all gap-1">
-                    Learn more <ArrowRight className="w-4 h-4" />
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Code Architecture UI Section */}
       <CodeInterfaceSection />
 
       {/* Stats Band */}
-      <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-white/10">
-        <div className="container mx-auto px-6">
+      <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-white/10 relative overflow-hidden">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="container mx-auto px-6 relative z-10"
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
+            <motion.div variants={childVariants}>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">99.99%</div>
               <div className="text-gray-400 font-medium">Uptime SLA</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={childVariants}>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">150+</div>
               <div className="text-gray-400 font-medium">Enterprise Clients</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={childVariants}>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">&lt;15m</div>
               <div className="text-gray-400 font-medium">Response Time</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div variants={childVariants}>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">24/7</div>
               <div className="text-gray-400 font-medium">SOC Monitoring</div>
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Leadership Section */}
       <section className="py-24 relative overflow-hidden bg-white/5 border-b border-white/10">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="mb-16 text-center max-w-3xl mx-auto">
+        <motion.div 
+          variants={sectionVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="container mx-auto px-6 relative z-10"
+        >
+          <motion.div variants={childVariants} className="mb-16 text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Leadership</h2>
             <p className="text-gray-400 text-lg">Guided by visionaries dedicated to building a sustainable and secure future.</p>
-          </div>
+          </motion.div>
           
           <div className="flex flex-col md:flex-row flex-wrap gap-8 justify-center items-center">
-            <PartnerProfile 
-              name="Pranay Kumar Burre"
+            <motion.div variants={childVariants}>
+              <PartnerProfile 
+                name="Pranay Kumar Burre"
               title="Founder & Director"
               imageSrc="/images/pranay_burre.jpeg"
               linkedinUrl="#"
@@ -194,7 +229,9 @@ export default function Home() {
                 </>
               }
             />
+            </motion.div>
             
+            <motion.div variants={childVariants}>
             <PartnerProfile 
               name="Manish Sonkar"
               title="Sr. Partner"
@@ -214,7 +251,9 @@ export default function Home() {
                 </>
               }
             />
+            </motion.div>
             
+            <motion.div variants={childVariants}>
             <PartnerProfile 
               name="Pradeep Panwar"
               title="Sr. Partner"
@@ -234,7 +273,9 @@ export default function Home() {
                 </>
               }
             />
+            </motion.div>
 
+            <motion.div variants={childVariants}>
             <PartnerProfile 
               name="Barendra Sekhar"
               title="Sr. Partner"
@@ -254,14 +295,21 @@ export default function Home() {
                 </>
               }
             />
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Final CTA */}
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10 text-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
+          className="container mx-auto px-6 relative z-10 text-center"
+        >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">Ready to transform your enterprise?</h2>
           <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
             Book a free consultation with our solutions architects to discuss your specific requirements.
@@ -272,7 +320,7 @@ export default function Home() {
           >
             Book a Free Consultation
           </Link>
-        </div>
+        </motion.div>
       </section>
     </div>
   );
