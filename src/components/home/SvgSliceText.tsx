@@ -4,11 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 const servicesList = [
-  { top: "CYBER SECURITY", bottom: "ZERO TRUST" },
-  { top: "AI & ML", bottom: "INTELLIGENCE" },
-  { top: "CLOUD", bottom: "ARCHITECTURE" },
-  { top: "SAP", bottom: "INTEGRATION" },
-  { top: "MANAGED IT", bottom: "INFRASTRUCTURE" },
+  { top: "SOFTWARE HOUSE", bottom: "DEVELOPMENT" },
+  { top: "IT CONSULTANT", bottom: "STRATEGY" },
+  { top: "GREEN BUILDINGS", bottom: "SUSTAINABILITY" }
 ];
 
 export default function SvgSliceText() {
@@ -20,7 +18,7 @@ export default function SvgSliceText() {
     // GSAP context for cleanup
     const ctx = gsap.context(() => {
       // Reset state
-      gsap.set(".slice-line", { strokeDasharray: "600", strokeDashoffset: "600" });
+      gsap.set(".slice-line", { strokeDasharray: "1000", strokeDashoffset: "1000" });
 
       let currentServiceIndex = 0;
 
@@ -41,7 +39,7 @@ export default function SvgSliceText() {
       tl.to(".slice-line", { duration: 0.4, strokeDashoffset: 0, ease: "power2.in", stagger: 0.25 }, "lineStart");
       
       // Erase lines
-      tl.to(".slice-line", { duration: 0.4, strokeDashoffset: -600, ease: "power2.out", stagger: 0.25 }, "lineStart+=0.25");
+      tl.to(".slice-line", { duration: 0.4, strokeDashoffset: -1000, ease: "power2.out", stagger: 0.25 }, "lineStart+=0.25");
       
       // Slices separate
       tl.to("#slide1", { duration: 1, x: -13, y: 9, ease: "circ.out" }, "lineStart+=0.25");
@@ -107,27 +105,27 @@ export default function SvgSliceText() {
       <svg
         id="demo"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1000 650"
+        viewBox="-200 0 1400 650"
         className="w-full max-w-4xl max-h-[35vh] font-bold font-sans overflow-visible"
       >
         <defs>
           <pattern id="slicePattern" patternUnits="userSpaceOnUse" width="2000" height="800" x="-500" y="0">
-            <text ref={topTextRef} transform="translate(1000 360)" textAnchor="middle" fontSize="120" fill="#3B82F6">
-              CYBER SECURITY
+            <text ref={topTextRef} transform="translate(1000 360)" textAnchor="middle" fontSize="140" fill="#3B82F6">
+              SOFTWARE HOUSE
             </text>
           </pattern>
 
           <pattern id="cutPattern" patternUnits="userSpaceOnUse" width="2000" height="800" x="-500" y="0">
-            <text ref={bottomTextRef} transform="translate(1000 500)" textAnchor="middle" fontSize="85" fill="#7C3AED">
-              ZERO TRUST
+            <text ref={bottomTextRef} transform="translate(1000 500)" textAnchor="middle" fontSize="100" fill="#7C3AED">
+              DEVELOPMENT
             </text>
           </pattern>
         </defs>
 
         <g fill="url(#slicePattern)">
-          <polygon id="slide1" points="0,150 551,150 201,400 0,400" />
-          <polygon id="slide2" points="549,150 1000,400 999,400 1000,150" />
-          <polygon points="200,400 550,150 1000,400" />
+          <polygon id="slide1" points="-500,150 551,150 -150,650 -500,650" />
+          <polygon id="slide2" points="549,150 1500,150 1500,650 1450,650" />
+          <polygon points="-150,650 550,150 1450,650" />
         </g>
 
         <g id="strips" fill="url(#cutPattern)">
@@ -138,8 +136,8 @@ export default function SvgSliceText() {
           <rect x="-200" y="520" width="1400" height="90" />
         </g>
 
-        <line className="slice-line" x1="550" y1="150" x2="200" y2="400" strokeWidth="2" stroke="#FFFFFF" />
-        <line className="slice-line" x1="550" y1="150" x2="1000" y2="400" strokeWidth="2" stroke="#FFFFFF" />
+        <line className="slice-line" x1="550" y1="150" x2="-150" y2="650" strokeWidth="2" stroke="#FFFFFF" />
+        <line className="slice-line" x1="550" y1="150" x2="1450" y2="650" strokeWidth="2" stroke="#FFFFFF" />
       </svg>
     </div>
   );

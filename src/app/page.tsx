@@ -3,9 +3,10 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Brain, Cloud, Database, Cpu, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import { Shield, Brain, Cloud, Database, Cpu, ArrowRight, ShieldCheck, Zap, Code, MonitorSmartphone, Leaf } from "lucide-react";
 import SvgSliceText from "@/components/home/SvgSliceText";
 import CodeInterfaceSection from "@/components/home/CodeInterfaceSection";
+import PartnerProfile from "@/components/home/PartnerProfile";
 
 // Dynamically import 3D component with no SSR to prevent hydration errors and improve initial load
 const Hero3D = dynamic(() => import("@/components/home/Hero3D"), { ssr: false });
@@ -103,34 +104,22 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "Cybersecurity",
-                description: "VAPT, SOC-as-a-Service, Zero Trust Architecture, and compliance advisory.",
-                icon: Shield,
-                link: "/services/cybersecurity"
+                title: "Software House",
+                description: "Custom software development, enterprise applications, and scalable digital solutions.",
+                icon: Code,
+                link: "/services/software-house"
               },
               {
-                title: "AI & Machine Learning",
-                description: "LLM integration, MLOps, computer vision, and predictive analytics.",
-                icon: Brain,
-                link: "/services/ai-ml"
+                title: "IT Consultant",
+                description: "Strategic IT consulting, digital transformation, and robust infrastructure planning.",
+                icon: MonitorSmartphone,
+                link: "/services/it-consulting"
               },
               {
-                title: "Cloud Solutions",
-                description: "AWS/Azure/GCP architecture, Kubernetes, DevOps, and cloud migration.",
-                icon: Cloud,
-                link: "/services/cloud"
-              },
-              {
-                title: "SAP Services",
-                description: "S/4HANA implementation, support, and integration with modern cloud tech.",
-                icon: Database,
-                link: "/services/sap"
-              },
-              {
-                title: "Managed IT",
-                description: "Infrastructure management and digital transformation consulting.",
-                icon: Cpu,
-                link: "/services/managed-it"
+                title: "Green Buildings",
+                description: "Sustainable building design, LEED certification, and energy-efficient architecture.",
+                icon: Leaf,
+                link: "/services/green-buildings"
               }
             ].map((service, index) => (
               <Link key={index} href={service.link}>
@@ -173,6 +162,58 @@ export default function Home() {
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">24/7</div>
               <div className="text-gray-400 font-medium">SOC Monitoring</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Section */}
+      <section className="py-24 relative overflow-hidden bg-white/5 border-b border-white/10">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Leadership</h2>
+            <p className="text-gray-400 text-lg">Guided by visionaries dedicated to building a sustainable and secure future.</p>
+          </div>
+          
+          <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+            <PartnerProfile 
+              name="Manish Sonkar"
+              title="Sr. Partner"
+              imageSrc="/images/manish_sonkar.jpeg"
+              linkedinUrl="https://www.linkedin.com/in/manishsonkar/"
+              content={
+                <>
+                  <p>
+                    Manish Sonkar is CEO and co-founder of <strong className="text-white font-semibold">NEOENRG</strong>, a deep-tech clean energy conglomerate operating across seven countries.
+                  </p>
+                  <p>
+                    A serial entrepreneur since 2009, he has built ventures spanning AI, medical devices, semiconductors, and inventory systems for UCIL under India's Department of Atomic Energy.
+                  </p>
+                  <p>
+                    A futurist and three-time UNFCCC COP speaker, he specialises in vertically integrated, first-principles engineering for moonshot ventures with large-scale societal impact across energy, defence, and advanced computing.
+                  </p>
+                </>
+              }
+            />
+            
+            <PartnerProfile 
+              name="Pradeep Panwar"
+              title="Sr. Partner"
+              imageSrc="/images/pradeep_panwar.jpeg"
+              linkedinUrl="https://www.linkedin.com/in/pradeep-panwar-b881b24/"
+              content={
+                <>
+                  <p>
+                    Visionary Entrepreneur with legacy of large infrastructure planning & development. 
+                  </p>
+                  <p>
+                    With 25+ years in managing complex projects in number of Infrastructure sectors for multi-laterals, governments and private sector. A PPP expert having served multiple govt. across geographies, BIG 4 and UN & Asian Development Bank funded projects. 
+                  </p>
+                  <p>
+                    He has a BE in Mechanical and Management from Uni Raj.
+                  </p>
+                </>
+              }
+            />
           </div>
         </div>
       </section>
