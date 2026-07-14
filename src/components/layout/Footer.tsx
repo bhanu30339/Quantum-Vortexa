@@ -11,7 +11,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <Link href="/" className="flex items-center group">
-                <div className="relative w-[180px] h-[40px]">
+                <div className="relative w-[260px] h-[60px]">
                   <Image 
                     src="/images/logo.png" 
                     alt="Quantum Vortexa Logo" 

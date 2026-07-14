@@ -36,7 +36,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center group">
-          <div className="relative w-[180px] h-[40px]">
+          <div className="relative w-[260px] h-[60px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
