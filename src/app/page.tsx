@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Shield, Brain, Cloud, Database, Cpu, ArrowRight, ShieldCheck, Zap, Code, MonitorSmartphone, Leaf } from "lucide-react";
 import SvgSliceText from "@/components/home/SvgSliceText";
@@ -375,31 +376,76 @@ export default function Home() {
               }
             />
             </motion.div>
+
+            <motion.div variants={leadershipCardVariants}>
+            <PartnerProfile 
+              name="Rajasekhar Sanka"
+              title="Managing Director"
+              imageSrc="/images/rajasekhar_sanka.jpeg"
+              linkedinUrl="#"
+              content={
+                <>
+                  <p>
+                    A client-focused leader with expertise in building high-value corporate relationships and driving strategic growth. 
+                  </p>
+                  <p>
+                    Rajasekhar specializes in understanding client challenges, designing effective delivery plans, and ensuring seamless execution. With strong skills in business development, renewals, and team leadership, he is committed to creating long-term partnerships and a strong global revenue pipeline for <strong className="text-white font-semibold">Quantum Vortexa</strong>.
+                  </p>
+                </>
+              }
+            />
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
-        <motion.div 
-          variants={ctaVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="container mx-auto px-6 relative z-10 text-center"
-        >
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">Ready to transform your enterprise?</h2>
-          <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-            Book a free consultation with our solutions architects to discuss your specific requirements.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex px-8 py-4 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-bold hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] transition-all scale-100 hover:scale-105"
+      {/* Modern Contact Us CTA */}
+      <section className="py-12 md:py-24 relative overflow-hidden bg-black">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div 
+            variants={ctaVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            className="relative w-full rounded-[2.5rem] overflow-hidden min-h-[500px] flex items-center shadow-2xl border border-white/10"
           >
-            Book a Free Consultation
-          </Link>
-        </motion.div>
+            {/* Background Image */}
+            <Image 
+              src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              alt="Contact Quantum Vortexa"
+              fill
+              className="object-cover opacity-50 filter grayscale-[20%]"
+            />
+            
+            {/* Gradient Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020617] via-[#020617]/90 to-transparent" />
+            <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
+            
+            {/* Content */}
+            <div className="relative z-10 w-full max-w-3xl p-8 md:p-12 lg:p-20">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 backdrop-blur-md mb-8">
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                <span className="text-sm font-medium text-white">Available for Consultation</span>
+              </div>
+              
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight leading-tight">
+                Let's build the <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">future together.</span>
+              </h2>
+              
+              <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-xl leading-relaxed">
+                Connect with our elite architects to map out your infrastructure's future, secure your enterprise, and scale your operations globally.
+              </p>
+              
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-gray-100 hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.2)] group"
+              >
+                Start a Conversation
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

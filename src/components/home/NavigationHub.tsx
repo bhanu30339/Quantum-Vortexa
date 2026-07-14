@@ -21,10 +21,10 @@ const portals = [
     className: "col-span-1 md:col-span-1 min-h-[400px]"
   },
   {
-    title: "Contact Us",
-    desc: "Connect with our elite architects to map out your infrastructure's future.",
-    href: "/contact",
-    img: "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    title: "Case Studies",
+    desc: "Discover how we've architected digital transformation for leading enterprises.",
+    href: "/case-studies",
+    img: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     className: "col-span-1 md:col-span-3 min-h-[350px]"
   }
 ];
