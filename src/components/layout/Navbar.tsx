@@ -38,7 +38,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center group">
           <div className="relative w-[180px] h-[40px]">
             <Image 
-              src="/logo.png" 
+              src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
               fill 
               className="object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(124,58,237,0.4)] transition-all"

@@ -13,7 +13,7 @@ export default function Footer() {
               <Link href="/" className="flex items-center group">
                 <div className="relative w-[180px] h-[40px]">
                   <Image 
-                    src="/logo.png" 
+                    src="/images/logo.png" 
                     alt="Quantum Vortexa Logo" 
                     fill 
                     className="object-contain"
