@@ -9,6 +9,7 @@ import CodeInterfaceSection from "@/components/home/CodeInterfaceSection";
 import PartnerProfile from "@/components/home/PartnerProfile";
 import FeaturedCaseStudies from "@/components/home/FeaturedCaseStudies";
 import AnimatedNumber from "@/components/home/AnimatedNumber";
+import NavigationHub from "@/components/home/NavigationHub";
 
 // Dynamically import 3D component with no SSR to prevent hydration errors and improve initial load
 const Hero3D = dynamic(() => import("@/components/home/Hero3D"), { ssr: false });
@@ -209,6 +210,17 @@ export default function Home() {
 
       {/* Code Architecture UI Section */}
       <CodeInterfaceSection />
+
+      {/* Visual Navigation Hub */}
+      <section className="py-24 relative bg-black overflow-hidden border-y border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="mb-16 text-center max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Explore Our World</h2>
+            <p className="text-gray-400 text-lg">Navigate through our comprehensive solutions, industry expertise, and connect with our elite architects.</p>
+          </div>
+          <NavigationHub />
+        </div>
+      </section>
 
       {/* Stats Band */}
       <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-white/10 relative overflow-hidden">
