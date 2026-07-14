@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
       dir="ltr"
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-[#05060A] text-white">
         <LenisProvider>
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>

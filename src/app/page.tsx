@@ -4,6 +4,8 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Shield, Brain, Cloud, Database, Cpu, ArrowRight, ShieldCheck, Zap } from "lucide-react";
+import SvgSliceText from "@/components/home/SvgSliceText";
+import CodeInterfaceSection from "@/components/home/CodeInterfaceSection";
 
 // Dynamically import 3D component with no SSR to prevent hydration errors and improve initial load
 const Hero3D = dynamic(() => import("@/components/home/Hero3D"), { ssr: false });
@@ -31,7 +33,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full relative">
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden pt-20 pb-32">
         <Hero3D />
         
         <div className="container mx-auto px-6 relative z-10">
@@ -41,20 +43,16 @@ export default function Home() {
             animate="visible"
             className="max-w-4xl mx-auto text-center mt-12"
           >
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-8">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-0 mt-2">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               <span className="text-sm font-medium text-gray-300">Empowering UAE Enterprises</span>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-              <span className="text-white">Secure. Intelligent.</span>
-              <br />
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">
-                Limitless Scale.
-              </span>
-            </motion.h1>
+            <motion.div variants={itemVariants} className="mb-4 w-full flex justify-center">
+              <SvgSliceText />
+            </motion.div>
             
-            <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={itemVariants} className="text-lg md:text-xl text-gray-400 mb-6 max-w-2xl mx-auto leading-relaxed">
               Advanced technology solutions for the Middle East. We specialize in Cybersecurity, AI/ML, Cloud Architecture, and Enterprise SAP integration.
             </motion.p>
             
@@ -77,10 +75,11 @@ export default function Home() {
         </div>
       </section>
 
+
       {/* Trust Marquee */}
       <section className="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm">
         <div className="container mx-auto px-6 overflow-hidden">
-          <div className="flex gap-12 items-center justify-between opacity-50 whitespace-nowrap animate-marquee">
+          <div className="flex gap-12 items-center justify-between opacity-50 whitespace-nowrap animate-marquee w-max">
             <span className="text-xl font-bold font-mono">ISO 27001</span>
             <span className="text-xl font-bold font-mono">SOC 2 COMPLIANT</span>
             <span className="text-xl font-bold font-mono">UAE PDPL READY</span>
@@ -150,6 +149,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Code Architecture UI Section */}
+      <CodeInterfaceSection />
 
       {/* Stats Band */}
       <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-white/10">

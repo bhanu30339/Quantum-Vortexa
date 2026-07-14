@@ -43,7 +43,7 @@ export default function Hero3D() {
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         <AnimatedSphere />
       </Canvas>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#05060A]/50 to-[#05060A] pointer-events-none" />
     </div>
   );
 }
