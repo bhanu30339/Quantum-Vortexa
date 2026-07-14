@@ -174,7 +174,27 @@ export default function Home() {
             <p className="text-gray-400 text-lg">Guided by visionaries dedicated to building a sustainable and secure future.</p>
           </div>
           
-          <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+          <div className="flex flex-col lg:flex-row flex-wrap gap-8 justify-center items-center">
+            <PartnerProfile 
+              name="Pranay Kumar Burre"
+              title="Founder & Director"
+              imageSrc="/images/pranay_burre.jpeg"
+              linkedinUrl="#"
+              content={
+                <>
+                  <p>
+                    Pranay Kumar Burre is the Director and Founder of <strong className="text-white font-semibold">Quantum Vortexa FZE LLC</strong>, leading the company's vision for innovation, strategic growth, and global business development.
+                  </p>
+                  <p>
+                    He is a results-driven professional with experience in operations management, business leadership, and strategic execution. As Managing Director at Spartanz and Director of Operations at CS Software (Dubai), he brings a strong focus on operational efficiency, business growth, and delivering value through effective leadership.
+                  </p>
+                  <p>
+                    With an engineering background, he combines technical knowledge with practical business expertise to drive sustainable growth and operational excellence.
+                  </p>
+                </>
+              }
+            />
+            
             <PartnerProfile 
               name="Manish Sonkar"
               title="Sr. Partner"
@@ -210,6 +230,26 @@ export default function Home() {
                   </p>
                   <p>
                     He has a BE in Mechanical and Management from Uni Raj.
+                  </p>
+                </>
+              }
+            />
+
+            <PartnerProfile 
+              name="Barendra Sekhar"
+              title="Sr. Partner"
+              imageSrc="/images/barendra_sekhar.jpeg"
+              linkedinUrl="#"
+              content={
+                <>
+                  <p>
+                    Barendra Sekhar is a seasoned technology and business leader with extensive experience in digital transformation, cloud technologies, AI, and enterprise consulting.
+                  </p>
+                  <p>
+                    Known for delivering strategic solutions, leading high-performing teams, and driving innovation across complex business environments.
+                  </p>
+                  <p>
+                    Passionate about leveraging emerging technologies to create measurable business value while mentoring teams and fostering continuous growth.
                   </p>
                 </>
               }
