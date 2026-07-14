@@ -7,6 +7,8 @@ import { Shield, Brain, Cloud, Database, Cpu, ArrowRight, ShieldCheck, Zap, Code
 import SvgSliceText from "@/components/home/SvgSliceText";
 import CodeInterfaceSection from "@/components/home/CodeInterfaceSection";
 import PartnerProfile from "@/components/home/PartnerProfile";
+import FeaturedCaseStudies from "@/components/home/FeaturedCaseStudies";
+import AnimatedNumber from "@/components/home/AnimatedNumber";
 
 // Dynamically import 3D component with no SSR to prevent hydration errors and improve initial load
 const Hero3D = dynamic(() => import("@/components/home/Hero3D"), { ssr: false });
@@ -31,18 +33,62 @@ export default function Home() {
     },
   };
 
-  const sectionVariants = {
-    hidden: { opacity: 0, y: 40 },
+  const servicesGridVariants = {
+    hidden: { opacity: 0 },
     visible: { 
       opacity: 1, 
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+    }
+  };
+  const serviceCardVariants = {
+    hidden: { opacity: 0, rotateX: -45, y: 50 },
+    visible: { 
+      opacity: 1, 
+      rotateX: 0, 
       y: 0, 
-      transition: { duration: 0.8, ease: "easeOut" as const, staggerChildren: 0.15 }
+      transition: { type: "spring" as const, stiffness: 100, damping: 15 } 
     }
   };
 
-  const childVariants = {
-    hidden: { opacity: 0, scale: 0.95, y: 20 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { type: "spring" as const, stiffness: 100, damping: 20 } }
+  const statsContainerVariants = {
+    hidden: { opacity: 0, scale: 1.05, filter: "blur(10px)" },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      filter: "blur(0px)",
+      transition: { duration: 0.8, ease: "easeOut" as const, staggerChildren: 0.1 } 
+    }
+  };
+  const statsItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
+  };
+
+  const leadershipContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.2 }
+    }
+  };
+  const leadershipCardVariants = {
+    hidden: { opacity: 0, x: -50, scale: 0.9 },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      scale: 1,
+      transition: { type: "spring" as const, stiffness: 80, damping: 20 } 
+    }
+  };
+
+  const ctaVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -2 },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      rotate: 0,
+      transition: { type: "spring" as const, stiffness: 100, damping: 12, delay: 0.2 } 
+    }
   };
 
   return (
@@ -108,15 +154,15 @@ export default function Home() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden" style={{ perspective: "1000px" }}>
         <motion.div 
-          variants={sectionVariants}
+          variants={servicesGridVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="container mx-auto px-6"
         >
-          <motion.div variants={childVariants} className="mb-16 text-center max-w-3xl mx-auto">
+          <motion.div variants={serviceCardVariants} className="mb-16 text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Enterprise Capabilities</h2>
             <p className="text-gray-400 text-lg">Comprehensive technology solutions designed for scale, security, and performance across GCC markets.</p>
           </motion.div>
@@ -142,7 +188,7 @@ export default function Home() {
                 link: "/services/green-buildings"
               }
             ].map((service, index) => (
-              <motion.div variants={childVariants} key={index} className="h-full">
+              <motion.div variants={serviceCardVariants} key={index} className="h-full transform-style-3d">
                 <Link href={service.link} className="block h-full">
                   <div className="p-8 rounded-2xl bg-white/5 border border-white/5 hover:border-primary/50 hover:bg-white/10 transition-all group h-full backdrop-blur-sm shadow-lg hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
                     <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -167,49 +213,70 @@ export default function Home() {
       {/* Stats Band */}
       <section className="py-20 bg-gradient-to-r from-primary/10 to-accent/10 border-y border-white/10 relative overflow-hidden">
         <motion.div 
-          variants={sectionVariants}
+          variants={statsContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="container mx-auto px-6 relative z-10"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <motion.div variants={childVariants}>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">99.99%</div>
+            <motion.div variants={statsItemVariants}>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <AnimatedNumber value={99.99} decimals={2} suffix="%" />
+              </div>
               <div className="text-gray-400 font-medium">Uptime SLA</div>
             </motion.div>
-            <motion.div variants={childVariants}>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">150+</div>
+            <motion.div variants={statsItemVariants}>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <AnimatedNumber value={150} suffix="+" />
+              </div>
               <div className="text-gray-400 font-medium">Enterprise Clients</div>
             </motion.div>
-            <motion.div variants={childVariants}>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">&lt;15m</div>
+            <motion.div variants={statsItemVariants}>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <AnimatedNumber value={15} prefix="<" suffix="m" />
+              </div>
               <div className="text-gray-400 font-medium">Response Time</div>
             </motion.div>
-            <motion.div variants={childVariants}>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">24/7</div>
+            <motion.div variants={statsItemVariants}>
+              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
+                <AnimatedNumber value={24} suffix="/7" />
+              </div>
               <div className="text-gray-400 font-medium">SOC Monitoring</div>
             </motion.div>
           </div>
         </motion.div>
       </section>
 
+      {/* Featured Case Studies Carousel */}
+      <section className="py-24 relative overflow-hidden bg-black">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="container mx-auto px-6 relative z-10"
+        >
+          <FeaturedCaseStudies />
+        </motion.div>
+      </section>
+
       {/* Leadership Section */}
       <section className="py-24 relative overflow-hidden bg-white/5 border-b border-white/10">
         <motion.div 
-          variants={sectionVariants}
+          variants={leadershipContainerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="container mx-auto px-6 relative z-10"
         >
-          <motion.div variants={childVariants} className="mb-16 text-center max-w-3xl mx-auto">
+          <motion.div variants={leadershipCardVariants} className="mb-16 text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Our Leadership</h2>
             <p className="text-gray-400 text-lg">Guided by visionaries dedicated to building a sustainable and secure future.</p>
           </motion.div>
           
           <div className="flex flex-col md:flex-row flex-wrap gap-8 justify-center items-center">
-            <motion.div variants={childVariants}>
+            <motion.div variants={leadershipCardVariants}>
               <PartnerProfile 
                 name="Pranay Kumar Burre"
               title="Founder & Director"
@@ -231,7 +298,7 @@ export default function Home() {
             />
             </motion.div>
             
-            <motion.div variants={childVariants}>
+            <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Manish Sonkar"
               title="Sr. Partner"
@@ -253,7 +320,7 @@ export default function Home() {
             />
             </motion.div>
             
-            <motion.div variants={childVariants}>
+            <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Pradeep Panwar"
               title="Sr. Partner"
@@ -275,7 +342,7 @@ export default function Home() {
             />
             </motion.div>
 
-            <motion.div variants={childVariants}>
+            <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Barendra Sekhar"
               title="Sr. Partner"
@@ -304,10 +371,10 @@ export default function Home() {
       <section className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          variants={ctaVariants}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, type: "spring", bounce: 0.4 }}
           className="container mx-auto px-6 relative z-10 text-center"
         >
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">Ready to transform your enterprise?</h2>
