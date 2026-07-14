@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 
+import Image from "next/image";
+
 export default function Footer() {
   return (
     <footer className="bg-[#020306] border-t border-white/5 pt-16 pb-8">
@@ -8,12 +10,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div>
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 relative rounded-full bg-gradient-to-tr from-primary to-accent flex items-center justify-center text-white font-bold text-lg">
-                Q
-              </div>
-              <span className="font-bold text-xl tracking-tight text-white">
-                QUANTUM VORTEXA
-              </span>
+              <Link href="/" className="flex items-center group">
+                <div className="relative w-[180px] h-[40px]">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Quantum Vortexa Logo" 
+                    fill 
+                    className="object-contain"
+                  />
+                </div>
+              </Link>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Enterprise-grade technology solutions for the UAE and GCC. Specializing in Cybersecurity, AI, Cloud Architecture, and SAP Services.
