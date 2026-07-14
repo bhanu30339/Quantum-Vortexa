@@ -206,7 +206,7 @@ export default function IndustriesPage() {
         </section>
 
         {/* CTA */}
-        <section className="rounded-[40px] border border-cyan-400/20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-12 text-center">
+        {/* <section className="rounded-[40px] border border-cyan-400/20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-12 text-center">
           <h2 className="text-4xl font-bold text-white">Your industry. Our expertise.</h2>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-gray-300">
             Let&apos;s discuss how Quantum Vortexa can accelerate transformation in
@@ -218,7 +218,7 @@ export default function IndustriesPage() {
           >
             Schedule a Consultation <ArrowRight className="h-4 w-4" />
           </Link>
-        </section>
+        </section> */}
       </div>
     </div>
   );
