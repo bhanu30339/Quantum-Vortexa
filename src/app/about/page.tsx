@@ -169,13 +169,13 @@ export default function AboutPage() {
             }
           `}</style>
           <h2 className="mb-12 text-center text-4xl font-bold text-white">Our Journey</h2>
-          <div className="isolate grid gap-8 md:grid-cols-4">
+          <div className="isolate grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {timeline.map((item,index)=>(
               <div key={item} className="relative p-8 text-center">
                 <div className="absolute inset-0 z-[-2] rounded-3xl border border-white/10 bg-white/5 transition hover:border-cyan-400/40" />
                 
                 {index < timeline.length - 1 && (
-                  <div className="absolute left-[50%] top-[59px] z-[-1] hidden h-[2px] w-[calc(100%+2rem)] overflow-hidden bg-white/10 md:block">
+                  <div className="absolute left-[50%] top-[59px] z-[-1] hidden h-[2px] w-[calc(100%+2rem)] overflow-hidden bg-white/10 lg:block">
                     <div 
                       className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-cyan-400 to-transparent" 
                       style={{ 

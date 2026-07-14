@@ -232,7 +232,7 @@ export default function CaseStudiesPage() {
 
         {/* Impact band */}
         <section className="mt-24 rounded-[40px] border border-white/10 bg-white/5 p-12">
-          <div className="grid gap-8 md:grid-cols-4">
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               { value: "250+", label: "Projects Delivered" },
               { value: "15+", label: "Countries Served" },

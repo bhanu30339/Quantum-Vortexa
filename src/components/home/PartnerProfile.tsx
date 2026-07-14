@@ -85,18 +85,18 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
                 stiffness: 300,
                 duration: 0.5 
               }}
-              className="relative w-full max-w-3xl bg-black border border-white/10 rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] z-10 flex flex-col md:flex-row"
+              className="relative w-full max-w-3xl max-h-[90vh] sm:max-h-[85vh] bg-black border border-white/10 rounded-2xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)] z-10 flex flex-col md:flex-row"
             >
               {/* Close Button */}
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 border border-white/10 flex items-center justify-center text-white transition-colors backdrop-blur-md"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-black/60 border border-white/20 flex items-center justify-center text-white transition-colors backdrop-blur-md"
               >
                 <X className="w-5 h-5" />
               </button>
 
               {/* Image Section */}
-              <div className="w-full md:w-2/5 h-64 md:h-auto relative bg-zinc-900 border-b md:border-b-0 md:border-r border-white/10">
+              <div className="w-full md:w-2/5 h-48 sm:h-64 md:h-auto shrink-0 relative bg-zinc-900 border-b md:border-b-0 md:border-r border-white/10">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 mix-blend-overlay" />
                 <Image 
                   src={imageSrc}
@@ -107,7 +107,7 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
               </div>
 
               {/* Content Section */}
-              <div className="w-full md:w-3/5 p-6 md:p-8 lg:p-10 bg-gradient-to-b from-zinc-900 to-black relative overflow-y-auto max-h-[75vh]">
+              <div className="w-full md:w-3/5 flex-1 p-6 md:p-8 lg:p-10 bg-gradient-to-b from-zinc-900 to-black relative overflow-y-auto">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
                 
                 <motion.div

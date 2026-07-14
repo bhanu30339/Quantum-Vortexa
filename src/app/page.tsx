@@ -174,7 +174,7 @@ export default function Home() {
             <p className="text-gray-400 text-lg">Guided by visionaries dedicated to building a sustainable and secure future.</p>
           </div>
           
-          <div className="flex flex-col lg:flex-row flex-wrap gap-8 justify-center items-center">
+          <div className="flex flex-col md:flex-row flex-wrap gap-8 justify-center items-center">
             <PartnerProfile 
               name="Pranay Kumar Burre"
               title="Founder & Director"

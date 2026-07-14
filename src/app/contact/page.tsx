@@ -33,22 +33,33 @@ const contactCards = [
   {
     icon: MapPin,
     title: "Office Location",
-    lines: ["CWS-1V-223327, 26th Floor", "Amber Gem Tower, Ajman Free Zone, UAE"],
+    lines: [
+      { text: "CWS-1V-223327, 26th Floor" },
+      { text: "Amber Gem Tower, Ajman Free Zone, UAE" }
+    ],
   },
   {
     icon: Phone,
     title: "Direct Lines & WhatsApp",
-    lines: ["+971 54 456 6332", "+971 58 103 7096"],
+    lines: [
+      { text: "+971 54 456 6332", href: "tel:+971544566332" },
+      { text: "+971 58 103 7096", href: "tel:+971581037096" }
+    ],
   },
   {
     icon: Clock,
     title: "Business Hours",
-    lines: ["Mon – Fri, 9:00 AM – 6:00 PM (GST)", "SOC 24/7/365"],
+    lines: [
+      { text: "Mon – Fri, 9:00 AM – 6:00 PM (GST)" },
+      { text: "SOC 24/7/365" }
+    ],
   },
   {
     icon: Mail,
     title: "Email",
-    lines: ["info@quantumvortexa.ae"],
+    lines: [
+      { text: "info@quantumvortexa.ae", href: "mailto:info@quantumvortexa.ae" }
+    ],
   },
 ];
 
@@ -124,7 +135,13 @@ export default function ContactPage() {
               <h3 className="text-sm font-bold text-white">{card.title}</h3>
               <div className="mt-2 space-y-1">
                 {card.lines.map((line) => (
-                  <p key={line} className="text-sm text-gray-400">{line}</p>
+                  'href' in line ? (
+                    <a key={line.text} href={line.href} className="block text-sm text-gray-400 hover:text-cyan-400 transition-colors">
+                      {line.text}
+                    </a>
+                  ) : (
+                    <p key={line.text} className="text-sm text-gray-400">{line.text}</p>
+                  )
                 ))}
               </div>
             </div>
