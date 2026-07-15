@@ -25,6 +25,7 @@ const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   company: z.string().optional(),
   email: z.string().email("Valid email is required"),
+  countryCode: z.string().min(1, "Required"),
   phone: z.string().min(6, "Valid phone number is required"),
   serviceInterest: z.string().min(1, "Please select a service"),
   message: z.string().min(10, "Please provide more details"),
@@ -82,24 +83,30 @@ export default function ContactPage() {
     formState: { errors },
   } = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      countryCode: "+971",
+    },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = (data: FormValues) => {
     setIsSubmitting(true);
     setSubmitStatus("idle");
+    
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const subject = encodeURIComponent(`New Lead: ${data.name} - ${data.serviceInterest}`);
+      const body = encodeURIComponent(`Name: ${data.name}
+Company: ${data.company || 'Not provided'}
+Email: ${data.email}
+Phone: ${data.countryCode} ${data.phone}
+Service Interest: ${data.serviceInterest}
 
-      if (response.ok) {
-        setSubmitStatus("success");
-        reset();
-      } else {
-        setSubmitStatus("error");
-      }
+Project Details:
+${data.message}`);
+
+      window.location.href = `mailto:pranay.b@qvortexa.com,info@qvortexa.com?subject=${subject}&body=${body}`;
+      
+      setSubmitStatus("success");
+      reset();
     } catch {
       setSubmitStatus("error");
     } finally {
@@ -233,12 +240,30 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="mb-1.5 block text-sm font-medium text-gray-300">Phone Number *</label>
-                    <input
-                      {...register("phone")}
-                      className="w-full rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition-all placeholder:text-gray-600 focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50"
-                      placeholder="+971 5X XXX XXXX"
-                    />
-                    {errors.phone && <p className="mt-1 text-xs text-red-400">{errors.phone.message}</p>}
+                    <div className="flex gap-2">
+                      <select
+                        {...register("countryCode")}
+                        className="w-28 shrink-0 rounded-xl border border-white/10 bg-black/40 px-2 py-3 text-white outline-none transition-all focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50 [&>option]:bg-[#070B14]"
+                      >
+                        <option value="+971">+971 (UAE)</option>
+                        <option value="+1">+1 (US/CA)</option>
+                        <option value="+44">+44 (UK)</option>
+                        <option value="+91">+91 (IN)</option>
+                        <option value="+966">+966 (SA)</option>
+                        <option value="+974">+974 (QA)</option>
+                        <option value="+973">+973 (BH)</option>
+                        <option value="+968">+968 (OM)</option>
+                        <option value="+965">+965 (KW)</option>
+                      </select>
+                      <input
+                        {...register("phone")}
+                        className="w-full flex-1 rounded-xl border border-white/10 bg-black/40 px-4 py-3 text-white outline-none transition-all placeholder:text-gray-600 focus:border-cyan-400/50 focus:ring-1 focus:ring-cyan-400/50"
+                        placeholder="5X XXX XXXX"
+                      />
+                    </div>
+                    {(errors.phone || errors.countryCode) && (
+                      <p className="mt-1 text-xs text-red-400">{errors.phone?.message || "Country code is required"}</p>
+                    )}
                   </div>
                 </div>
 
@@ -348,7 +373,7 @@ export default function ContactPage() {
               <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#070B14] p-6 sm:p-10 shadow-2xl">
                 <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-cyan-500/20 blur-[100px] pointer-events-none" />
                 <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/20 blur-[100px] pointer-events-none" />
-                
+
                 <button
                   type="button"
                   onClick={(e) => {
@@ -378,25 +403,25 @@ export default function ContactPage() {
                       </div>
                       <h3 className="mb-1 font-bold text-white">Leadership & Strategy</h3>
                       <p className="mb-4 text-sm text-gray-400">For executive discussions, acquisitions, and high-level partnerships.</p>
-                      
+
                       <a href="mailto:pranay@qvortexa.com" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300">
                         pranay@qvortexa.com <ExternalLink size={14} />
                       </a>
                     </div>
-                    
+
                     <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-emerald-400/40 hover:bg-white/10">
                       <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
                         <Info size={20} />
                       </div>
                       <h3 className="mb-1 font-bold text-white">General Inquiries</h3>
                       <p className="mb-4 text-sm text-gray-400">For general questions, platform support, and basic information.</p>
-                      
+
                       <a href="mailto:info@qvortexa.com" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
                         info@qvortexa.com <ExternalLink size={14} />
                       </a>
                     </div>
                   </div>
-                  
+
                   <div className="mt-6 rounded-2xl border border-white/5 bg-white/5 p-4 text-center">
                     <p className="text-sm text-gray-400">Looking for a tailored solution? <button onClick={() => { setIsEmailModalOpen(false); window.scrollTo({ top: 400, behavior: "smooth" }) }} className="font-medium text-cyan-400 hover:underline">Request a Callback</button> below.</p>
                   </div>

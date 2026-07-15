@@ -294,7 +294,7 @@ export default function Home() {
                 name="Pranay Kumar Burre"
               title="Founder & Director"
               imageSrc="/images/pranay_burre.jpeg"
-              linkedinUrl="#"
+              linkedinUrl="https://www.linkedin.com/in/pranay-kumar-burre-05b98b113/"
               content={
                 <>
                   <p>
@@ -360,7 +360,7 @@ export default function Home() {
               name="Barendra Sekhar"
               title="Sr Partner"
               imageSrc="/images/barendra_sekhar.jpeg"
-              linkedinUrl="#"
+              linkedinUrl="https://www.linkedin.com/in/basekhar/"
               content={
                 <>
                   <p>

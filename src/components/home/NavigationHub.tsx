@@ -10,21 +10,21 @@ const portals = [
     title: "Our Services",
     desc: "Explore our comprehensive suite of enterprise technology solutions designed for scale.",
     href: "/services",
-    img: "https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "https://images.pexels.com/photos/325229/pexels-photo-325229.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     className: "col-span-1 md:col-span-2 min-h-[400px]"
   },
   {
     title: "Industries",
     desc: "Tailored strategies accelerating transformation across diverse global sectors.",
     href: "/industries",
-    img: "https://images.pexels.com/photos/2582818/pexels-photo-2582818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "https://images.pexels.com/photos/373912/pexels-photo-373912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     className: "col-span-1 md:col-span-1 min-h-[400px]"
   },
   {
     title: "Case Studies",
     desc: "Discover how we've architected digital transformation for leading enterprises.",
     href: "/case-studies",
-    img: "https://images.pexels.com/photos/3182773/pexels-photo-3182773.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    img: "https://images.pexels.com/photos/3182765/pexels-photo-3182765.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     className: "col-span-1 md:col-span-3 min-h-[350px]"
   }
 ];
