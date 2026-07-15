@@ -210,6 +210,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <option value="cloud">Cloud Migration & Architecture</option>
                         <option value="sap">SAP Implementation</option>
                         <option value="managed-it">Managed IT Services</option>
+                        <option value="green-building">Green Building Services</option>
                         <option value="other">Other / Consultation</option>
                       </select>
                       {errors.serviceInterest && <p className="mt-1 text-xs text-red-400">{errors.serviceInterest.message}</p>}
