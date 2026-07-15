@@ -52,12 +52,19 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
         />
         
         <div className="absolute bottom-0 left-0 w-full p-6 z-20 flex flex-col justify-end h-full">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center mb-3 backdrop-blur-sm border border-primary/30">
-              <User className="w-5 h-5 text-primary" />
+          <div className="transform translate-y-8 group-hover:translate-y-0 transition-all duration-500 ease-out">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-full bg-primary/20 flex shrink-0 items-center justify-center backdrop-blur-sm border border-primary/30 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.4)] transition-all duration-500">
+                <User className="w-5 h-5 text-primary" />
+              </div>
+              <div className="overflow-hidden">
+                <p className="text-primary text-sm font-semibold uppercase tracking-wider translate-y-full group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out delay-100">
+                  {title}
+                </p>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-1 tracking-wide">{title}</h3>
-            <div className="h-1 w-12 bg-primary mt-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100" />
+            <h3 className="text-2xl font-bold text-white mb-1 tracking-wide group-hover:text-primary transition-colors duration-300">{name}</h3>
+            <div className="h-1 w-12 bg-gradient-to-r from-primary to-accent mt-4 opacity-0 group-hover:opacity-100 group-hover:w-24 transition-all duration-500 delay-200" />
           </div>
         </div>
         
