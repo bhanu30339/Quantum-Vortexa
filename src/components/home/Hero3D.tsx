@@ -232,13 +232,15 @@ export default function Hero3D() {
     const moveLoc = gl.getUniformLocation(program, "move");
     const wheelLoc = gl.getUniformLocation(program, "wheel");
 
-    let animationFrameId: number;
+    let animationFrameId: number = 0;
     let startTime = performance.now();
     
     let move = [0, 0];
     let wheel = [0, 0];
+    let isVisible = true;
 
     const render = (now: number) => {
+      if (!isVisible) return;
       const elapsedTime = (now - startTime) * 0.0004; // Slowed down by ~60%
       // Cap resolution massively to boost performance, the visual impact is minimal due to blur overlays
       const dpr = Math.min(window.devicePixelRatio || 1, 0.75); 
@@ -261,10 +263,21 @@ export default function Hero3D() {
       animationFrameId = requestAnimationFrame(render);
     };
 
-    animationFrameId = requestAnimationFrame(render);
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+      if (isVisible && !animationFrameId) {
+        animationFrameId = requestAnimationFrame(render);
+      } else if (!isVisible && animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = 0;
+      }
+    });
+    
+    observer.observe(canvas);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
       gl.deleteProgram(program);
       gl.deleteShader(vs);
       gl.deleteShader(fs);
