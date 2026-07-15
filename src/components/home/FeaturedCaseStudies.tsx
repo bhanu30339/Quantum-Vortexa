@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShieldCheck, Brain, Factory, ArrowRight, Activity, Cpu } from "lucide-react";
+import { ShieldCheck, Brain, Factory, ArrowRight, Activity, Cpu, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -48,6 +48,14 @@ const cases = [
 export default function FeaturedCaseStudies() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+
+  const nextSlide = () => {
+    setActiveIndex((current) => (current + 1) % cases.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((current) => (current - 1 + cases.length) % cases.length);
+  };
 
   // Auto-advance carousel
   useEffect(() => {
@@ -146,22 +154,44 @@ export default function FeaturedCaseStudies() {
         </AnimatePresence>
       </div>
 
-      {/* Navigation Pill */}
-      <div className="mt-8 px-2 py-1.5 rounded-full bg-[#1c1c1e] border border-white/10 flex items-center gap-1 shadow-xl">
-        {cases.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setActiveIndex(i)}
-            className="group relative px-3 py-2 flex items-center justify-center cursor-pointer"
-            aria-label={`Go to slide ${i + 1}`}
-          >
-            <div className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
-              activeIndex === i 
-                ? "w-8 bg-white" 
-                : "w-4 bg-white/20 group-hover:bg-white/40 group-hover:w-6"
-            }`} />
-          </button>
-        ))}
+      {/* Navigation Pill with Buttons */}
+      <div className="mt-8 flex items-center gap-4">
+        <button 
+          onClick={prevSlide}
+          className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all group overflow-hidden relative shadow-lg"
+          aria-label="Previous slide"
+        >
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <ChevronLeft className="w-5 h-5 group-hover:-translate-x-0.5 transition-transform duration-300" />
+          </motion.div>
+        </button>
+
+        <div className="px-2 py-1.5 rounded-full bg-[#1c1c1e] border border-white/10 flex items-center gap-1 shadow-xl">
+          {cases.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              className="group relative px-3 py-2 flex items-center justify-center cursor-pointer"
+              aria-label={`Go to slide ${i + 1}`}
+            >
+              <div className={`h-1.5 rounded-full transition-all duration-500 ease-out ${
+                activeIndex === i 
+                  ? "w-8 bg-white" 
+                  : "w-4 bg-white/20 group-hover:bg-white/40 group-hover:w-6"
+              }`} />
+            </button>
+          ))}
+        </div>
+
+        <button 
+          onClick={nextSlide}
+          className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all group overflow-hidden relative shadow-lg"
+          aria-label="Next slide"
+        >
+          <motion.div whileTap={{ scale: 0.9 }}>
+            <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
+          </motion.div>
+        </button>
       </div>
     </div>
   );

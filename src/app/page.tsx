@@ -382,7 +382,7 @@ export default function Home() {
               name="Rajasekhar Sanka"
               title="Sr Partner"
               imageSrc="/images/rajasekhar_sanka.png"
-              linkedinUrl="#"
+              linkedinUrl="https://www.linkedin.com/in/rajasekher/"
               content={
                 <>
                   <p>
