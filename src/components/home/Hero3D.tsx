@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 
 const fragmentShaderSource = `#version 300 es
-precision highp float;
+precision mediump float;
 out vec4 O;
 uniform float time;
 uniform vec2 resolution;
@@ -56,7 +56,7 @@ vec3 norm(vec3 p) {
 	);
 }
 bool march(inout vec3 p, vec3 rd, out float dd, out float at) {
-	for (float i=0.; i++<150.;) {
+	for (float i=0.; i++<60.;) { // Reduced iterations from 150 to 60 for performance
 		float d=map(p,true);
 		if (abs(d)<1e-3) return true;
 		if (d>100.) return false;
@@ -110,20 +110,20 @@ float shadow(vec3 p, vec3 lp) {
 			shd=.0;
 			break;
 		}
-		shd=min(shd,64.*d/i);
+		shd=min(shd,32.*d/i); // Reduced shadow hardness multiplier
 		i+=d;
+        if(i>20.) break; // Added max distance cap for shadow
 	}
 	return shd;
 }
 float calcAO(vec3 p, vec3 n) {
 	float occ=.0, sca=1.;
-	for (float i=.0; i<5.; i++) {
+	for (float i=.0; i<3.; i++) { // Reduced AO iterations from 5 to 3
 		float
-		h=.01+i*.09,
+		h=.01+i*.1,
 		d=map(p+h*n,false);
 		occ+=(h-d)*sca;
-		sca*=.55;
-		if (occ>.35) break;
+		sca*=.6;
 	}
 	return clamp(1.-3.*occ,.0,1.)*(.5+.5*n.y);
 }
@@ -163,13 +163,13 @@ vec3 render(vec2 uv) {
 	return col;
 }
 void main() { O=vec4(render((FC-.5*R)/MN),1.); }
-`;
+\`;
 
-const vertexShaderSource = `#version 300 es
+const vertexShaderSource = \`#version 300 es
 precision highp float;
 in vec4 position;
 void main(){gl_Position=position;}
-`;
+\`;
 
 export default function Hero3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -178,7 +178,12 @@ export default function Hero3D() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const gl = canvas.getContext("webgl2");
+    const gl = canvas.getContext("webgl2", { 
+      alpha: false, 
+      antialias: false,
+      depth: false,
+      powerPreference: "high-performance"
+    });
     if (!gl) {
       console.warn("WebGL 2 not supported, falling back to empty background.");
       return;
@@ -235,9 +240,10 @@ export default function Hero3D() {
 
     const render = (now: number) => {
       const elapsedTime = (now - startTime) * 0.0004; // Slowed down by ~60%
-      const dpr = Math.min(window.devicePixelRatio || 1, 1); // Cap resolution for performance
-      const width = canvas.clientWidth * dpr;
-      const height = canvas.clientHeight * dpr;
+      // Cap resolution massively to boost performance, the visual impact is minimal due to blur overlays
+      const dpr = Math.min(window.devicePixelRatio || 1, 0.75); 
+      const width = Math.floor(canvas.clientWidth * dpr);
+      const height = Math.floor(canvas.clientHeight * dpr);
 
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;

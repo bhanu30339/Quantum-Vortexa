@@ -69,7 +69,7 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
         </div>
         
         {/* Hover overlay hint */}
-        <div className="absolute inset-0 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute bottom-6 right-6 z-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="px-4 py-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 text-white/90 text-sm font-medium flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
             View Profile
           </div>
