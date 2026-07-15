@@ -138,7 +138,7 @@ export default function FeaturedCaseStudies() {
               src={activeCase.image}
               alt={activeCase.title}
               fill
-              className="object-cover opacity-80 mix-blend-overlay filter hover:mix-blend-normal transition-all duration-1000 cursor-pointer"
+              className="object-cover opacity-50 hover:opacity-100 transition-all duration-700 cursor-pointer"
             />
             {/* Inner glow effect simulating screen or device context */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
