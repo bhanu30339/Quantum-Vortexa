@@ -346,12 +346,16 @@ export default function ContactPage() {
               className="fixed left-1/2 top-1/2 z-[110] w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6"
             >
               <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#070B14] p-6 sm:p-10 shadow-2xl">
-                <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-cyan-500/20 blur-[100px]" />
-                <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/20 blur-[100px]" />
+                <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-cyan-500/20 blur-[100px] pointer-events-none" />
+                <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/20 blur-[100px] pointer-events-none" />
                 
                 <button
-                  onClick={() => setIsEmailModalOpen(false)}
-                  className="absolute right-6 top-6 z-10 text-gray-400 hover:text-white transition-colors"
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsEmailModalOpen(false);
+                  }}
+                  className="absolute right-4 top-4 z-50 p-2 text-gray-400 hover:text-white transition-colors cursor-pointer"
                 >
                   <X size={24} />
                 </button>

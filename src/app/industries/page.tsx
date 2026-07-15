@@ -135,11 +135,11 @@ export default function IndustriesPage() {
 
         {/* Bento Grid */}
         <section className="mb-24">
-          <div className="grid auto-rows-[420px] gap-6 lg:grid-cols-3">
+          <div className="grid auto-rows-auto gap-6 lg:grid-cols-3">
             {industries.map((ind) => (
               <div
                 key={ind.title}
-                className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 ${ind.span}`}
+                className={`group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 min-h-[420px] ${ind.span}`}
               >
                 <img
                   src={ind.image}
