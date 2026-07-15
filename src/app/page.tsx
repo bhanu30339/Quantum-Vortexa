@@ -380,8 +380,8 @@ export default function Home() {
             <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Rajasekhar Sanka"
-              title="Managing Director"
-              imageSrc="/images/rajasekhar_sanka.jpeg"
+              title="Sr. Partner"
+              imageSrc="/images/rajasekhar_sanka.png"
               linkedinUrl="#"
               content={
                 <>

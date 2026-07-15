@@ -37,9 +37,9 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="container mx-auto px-6 h-[112px] flex items-center justify-between">
         <Link href="/" className="flex items-center group">
-          <div className="relative w-[260px] h-[60px]">
+          <div className="relative w-[300px] h-[90px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 

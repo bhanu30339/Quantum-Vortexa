@@ -56,7 +56,7 @@ vec3 norm(vec3 p) {
 	);
 }
 bool march(inout vec3 p, vec3 rd, out float dd, out float at) {
-	for (float i=0.; i++<400.;) {
+	for (float i=0.; i++<150.;) {
 		float d=map(p,true);
 		if (abs(d)<1e-3) return true;
 		if (d>100.) return false;
@@ -234,8 +234,8 @@ export default function Hero3D() {
     let wheel = [0, 0];
 
     const render = (now: number) => {
-      const elapsedTime = (now - startTime) * 0.001;
-      const dpr = window.devicePixelRatio || 1;
+      const elapsedTime = (now - startTime) * 0.0004; // Slowed down by ~60%
+      const dpr = Math.min(window.devicePixelRatio || 1, 1); // Cap resolution for performance
       const width = canvas.clientWidth * dpr;
       const height = canvas.clientHeight * dpr;
 

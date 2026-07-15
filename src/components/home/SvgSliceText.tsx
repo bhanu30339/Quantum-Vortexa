@@ -45,55 +45,27 @@ export default function SvgSliceText() {
       tl.to("#slide1", { duration: 1, x: -13, y: 9, ease: "circ.out" }, "lineStart+=0.25");
       tl.to("#slide2", { duration: 1, x: 11, y: 6.5, ease: "circ.out" }, "lineStart+=0.5");
       
-      // Strips fly in
+      // Strips fly in smoothly (simplified)
       tl.from(strips, { 
-        duration: 1, 
-        x: (i) => (i % 2 === 0 ? -2000 : 2000), 
-        ease: "back.out", 
-        stagger: 0.15 
-      });
+        duration: 1.2, 
+        x: (i) => (i % 2 === 0 ? -1500 : 1500), 
+        ease: "power3.out", 
+        stagger: 0.1 
+      }, "lineStart+=0.6");
       
-      // Strips jitter
-      tl.to(strips, { 
-        duration: 0.4, 
-        x: (i) => [-50, 70, -70, 120][i % 4], 
-        opacity: (i) => (i % 2 === 0 ? 0.5 : 0.8),
-        repeat: 5, 
-        repeatDelay: 0.2, 
-        yoyoEase: "elastic.out(2, 0.2)", 
-        ease: "back.inOut",
-        stagger: -0.05 
-      }, "+=1");
-      
-      // More jitter (Y-axis)
+      // Gentle floating instead of rapid jitter to save CPU
       tl.to(strips, {
-        duration: 0.5,
-        y: (i) => [-30, -10, 10, 30][i % 4],
-        repeat: 3,
-        repeatDelay: 0.3,
+        duration: 2,
+        y: (i) => [-5, 5, -5, 5][i % 4],
+        ease: "sine.inOut",
         yoyo: true,
-        ease: "circ.inOut",
-        stagger: 0
-      }, "+=1.5");
-      
-      // Final crazy jitter
-      tl.to(strips, {
-        duration: 0.5,
-        x: (i) => [-30, -160, 120, -50][i % 4],
-        y: (i) => [-30, -10, 10, 30][i % 4],
-        rotation: (i) => [-2, 2, -4, 4][i % 4],
-        transformOrigin: "center center",
-        repeat: 3,
-        repeatDelay: 0.2,
-        yoyo: true,
-        ease: "back.inOut",
-        stagger: 0.07
-      }, "+=1");
+        repeat: 1
+      }, "+=0.2");
 
       // Reset animation nicely before looping
-      tl.to("#slide1", { duration: 1, x: 0, y: 0, ease: "power2.inOut" }, "+=1");
+      tl.to("#slide1", { duration: 1, x: 0, y: 0, ease: "power2.inOut" }, "+=0.5");
       tl.to("#slide2", { duration: 1, x: 0, y: 0, ease: "power2.inOut" }, "<");
-      tl.to(strips, { duration: 1, x: 2000, opacity: 0, ease: "power2.inOut", stagger: 0.1 }, "<");
+      tl.to(strips, { duration: 1, opacity: 0, ease: "power2.inOut", stagger: 0.05 }, "<");
 
     }, containerRef);
 
