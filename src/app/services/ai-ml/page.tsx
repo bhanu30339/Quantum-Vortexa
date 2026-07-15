@@ -87,7 +87,7 @@ export default function AIMLPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-bold">Model Accuracy</h4>
-                  <p className="text-violet-300 text-sm">Consistently >98% in production</p>
+                  <p className="text-violet-300 text-sm">Consistently &gt;98% in production</p>
                 </div>
               </div>
             </motion.div>
