@@ -11,7 +11,12 @@ import {
   Brain,
   Database,
   Cpu,
+  X,
+  Target,
+  Lightbulb,
+  Trophy,
 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const caseStudies = [
   {
@@ -32,6 +37,9 @@ const caseStudies = [
       { value: "100%", label: "PDPL Compliant" },
     ],
     tags: ["Zero Trust", "SOC", "PDPL", "Network Security"],
+    challenge: "The bank's legacy perimeter-based security model was struggling to cope with modern remote work and advanced persistent threats, exposing them to high risks of lateral movement.",
+    solution: "We engineered a comprehensive Zero Trust Architecture, enforcing strict identity verification, micro-segmentation, and continuous monitoring across all endpoints.",
+    impact: "Achieved full PDPL compliance within 6 months, drastically reduced the attack surface, and surprisingly improved employee access speeds by removing legacy VPN bottlenecks.",
   },
   {
     slug: "retail-ai-personalization",
@@ -51,6 +59,9 @@ const caseStudies = [
       { value: "120+", label: "Stores Connected" },
     ],
     tags: ["LLM", "Recommendations", "MLOps", "Real-time"],
+    challenge: "A massive regional retail chain suffered from low online engagement and flat average order values due to a static, one-size-fits-all e-commerce experience.",
+    solution: "Deployed a real-time recommendation engine powered by advanced ML models, unifying online and offline customer data to deliver hyper-personalized product feeds.",
+    impact: "Sales conversions tripled almost instantly. The unified data approach also allowed for better inventory forecasting across their 120+ physical stores.",
   },
   {
     slug: "manufacturing-iot-predictive",
@@ -70,6 +81,9 @@ const caseStudies = [
       { value: "$4.2M", label: "Annual Savings" },
     ],
     tags: ["IoT", "Predictive Analytics", "Cloud", "Industry 4.0"],
+    challenge: "Unplanned equipment failures were costing millions annually and causing massive supply chain disruptions for a major industrial manufacturer.",
+    solution: "Connected over 5,000 legacy and modern IoT sensors to a secure, cloud-native analytics platform featuring predictive failure models.",
+    impact: "Maintenance teams now receive alerts days before potential failures, slashing unplanned downtime by 62% and saving over $4.2M in the first year alone.",
   },
   {
     slug: "sap-s4hana-migration",
@@ -89,6 +103,9 @@ const caseStudies = [
       { value: "12", label: "Units Unified" },
     ],
     tags: ["S/4HANA", "Migration", "ERP", "Cloud"],
+    challenge: "Operating on 7 disparate, aging ERP instances, the conglomerate suffered from severe data silos and agonizingly slow financial reporting.",
+    solution: "Executed a phased, zero-downtime migration of 12 distinct business units onto a single, unified SAP S/4HANA cloud environment.",
+    impact: "Achieved real-time financial consolidation, reduced Total Cost of Ownership by 35%, and established a scalable digital core for future acquisitions.",
   },
   {
     slug: "energy-scada-security",
@@ -108,6 +125,9 @@ const caseStudies = [
       { value: "0", label: "Incidents Since" },
     ],
     tags: ["SCADA", "OT Security", "Compliance", "SOC"],
+    challenge: "The utility provider faced mounting regulatory pressure and increasing cyber threats targeting their highly vulnerable legacy SCADA systems.",
+    solution: "Engineered strict OT/IT network segmentation and deployed passive continuous monitoring tools tailored for industrial control systems.",
+    impact: "Secured critical infrastructure with zero operational disruption, achieving 100% compliance with stringent national cybersecurity standards.",
   },
   {
     slug: "healthcare-telemedicine-ai",
@@ -127,6 +147,9 @@ const caseStudies = [
       { value: "99.9%", label: "Platform Uptime" },
     ],
     tags: ["Telemedicine", "AI Triage", "HIPAA", "Cloud"],
+    challenge: "Overwhelmed emergency rooms and outpatient clinics were leading to dangerous patient wait times and severe doctor burnout.",
+    solution: "Built a fully HIPAA-aligned, cloud-based telemedicine platform featuring an intelligent AI triage assistant to pre-screen and route patients.",
+    impact: "The platform now successfully serves 50,000+ patients monthly, effectively cutting physical wait times by 45% and drastically improving patient satisfaction.",
   },
 ];
 
@@ -134,6 +157,7 @@ const filters = ["All", "Cybersecurity", "AI & ML", "Cloud & IoT", "SAP Services
 
 export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedStudy, setSelectedStudy] = useState<any | null>(null);
 
   const filtered =
     activeFilter === "All"
@@ -186,7 +210,8 @@ export default function CaseStudiesPage() {
           {filtered.map((cs) => (
             <div
               key={cs.slug}
-              className="group flex h-full flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-cyan-400/40"
+              onClick={() => setSelectedStudy(cs)}
+              className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-[28px] border border-white/10 bg-white/5 backdrop-blur-xl transition duration-300 hover:-translate-y-2 hover:border-cyan-400/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
@@ -261,6 +286,114 @@ export default function CaseStudiesPage() {
           </Link>
         </section>
       </div>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedStudy && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedStudy(null)}
+              className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-1/2 top-1/2 z-[110] w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6"
+            >
+              <div className="relative flex max-h-[90vh] flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#070B14] shadow-2xl">
+                
+                {/* Modal Header Image */}
+                <div className="relative h-48 sm:h-64 shrink-0 overflow-hidden">
+                  <img
+                    src={selectedStudy.image}
+                    alt={selectedStudy.title}
+                    className="h-full w-full object-cover opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/60 to-transparent" />
+                  <button
+                    onClick={() => setSelectedStudy(null)}
+                    className="absolute right-6 top-6 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-md transition-colors hover:bg-white/20"
+                  >
+                    <X size={20} />
+                  </button>
+                  <div className="absolute bottom-6 left-6 right-6 sm:bottom-8 sm:left-10">
+                    <div className={`mb-3 inline-flex items-center gap-2 rounded-full bg-gradient-to-r ${selectedStudy.accent} px-3 py-1 text-xs font-semibold text-white shadow-lg`}>
+                      <selectedStudy.icon className="h-3.5 w-3.5" /> {selectedStudy.service}
+                    </div>
+                    <h2 className="text-2xl font-black leading-tight text-white sm:text-4xl">{selectedStudy.title}</h2>
+                  </div>
+                </div>
+
+                {/* Modal Content */}
+                <div className="overflow-y-auto p-6 sm:p-10">
+                  {/* Highlights */}
+                  <div className="mb-10 grid gap-6 rounded-2xl border border-white/5 bg-white/5 p-6 sm:grid-cols-3">
+                    <div className="col-span-1">
+                      <div className="text-xs font-medium text-gray-500">Client</div>
+                      <div className="mt-1 text-sm font-bold text-white">{selectedStudy.client}</div>
+                    </div>
+                    <div className="col-span-1">
+                      <div className="text-xs font-medium text-gray-500">Industry</div>
+                      <div className="mt-1 text-sm font-bold text-white">{selectedStudy.industry}</div>
+                    </div>
+                    <div className="col-span-1 flex flex-wrap gap-2">
+                      {selectedStudy.tags.map((t: string) => (
+                        <span key={t} className="rounded-full border border-white/10 bg-black/50 px-3 py-1 text-[11px] text-gray-400">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Story */}
+                  <div className="grid gap-10 lg:grid-cols-3">
+                    <div className="lg:col-span-2 space-y-8">
+                      <div>
+                        <div className="mb-3 flex items-center gap-2 text-xl font-bold text-white">
+                          <Target className="h-5 w-5 text-cyan-400" /> The Challenge
+                        </div>
+                        <p className="text-gray-400 leading-relaxed">{selectedStudy.challenge}</p>
+                      </div>
+                      <div>
+                        <div className="mb-3 flex items-center gap-2 text-xl font-bold text-white">
+                          <Lightbulb className="h-5 w-5 text-blue-400" /> Our Solution
+                        </div>
+                        <p className="text-gray-400 leading-relaxed">{selectedStudy.solution}</p>
+                      </div>
+                      <div>
+                        <div className="mb-3 flex items-center gap-2 text-xl font-bold text-white">
+                          <Trophy className="h-5 w-5 text-emerald-400" /> The Impact
+                        </div>
+                        <p className="text-gray-400 leading-relaxed">{selectedStudy.impact}</p>
+                      </div>
+                    </div>
+
+                    {/* Metrics sidebar */}
+                    <div className="lg:col-span-1">
+                      <div className={`rounded-[24px] border border-white/10 bg-gradient-to-b ${selectedStudy.accent} p-[1px]`}>
+                        <div className="flex h-full flex-col gap-6 rounded-[23px] bg-[#070B14] p-6">
+                          <h3 className="font-bold text-white">Key Outcomes</h3>
+                          {selectedStudy.metrics.map((m: any, idx: number) => (
+                            <div key={idx} className="border-l-2 border-cyan-500/50 pl-4">
+                              <div className="text-3xl font-black text-white">{m.value}</div>
+                              <div className="mt-1 text-sm font-medium text-gray-400">{m.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
