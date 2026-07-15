@@ -48,6 +48,7 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
           src={imageSrc}
           alt={name}
           fill
+          sizes="(max-width: 768px) 100vw, 300px"
           className="object-cover transition-transform duration-700 group-hover:scale-110 filter grayscale group-hover:grayscale-0"
         />
         
@@ -116,6 +117,7 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
                     src={imageSrc}
                     alt={name}
                     fill
+                    sizes="(max-width: 768px) 100vw, 500px"
                     className="object-cover object-top filter contrast-125 saturate-50"
                   />
                 </div>

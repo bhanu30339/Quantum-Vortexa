@@ -163,13 +163,13 @@ vec3 render(vec2 uv) {
 	return col;
 }
 void main() { O=vec4(render((FC-.5*R)/MN),1.); }
-\`;
+`;
 
-const vertexShaderSource = \`#version 300 es
+const vertexShaderSource = `#version 300 es
 precision highp float;
 in vec4 position;
 void main(){gl_Position=position;}
-\`;
+`;
 
 export default function Hero3D() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
