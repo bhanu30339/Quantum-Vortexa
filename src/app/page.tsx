@@ -314,7 +314,7 @@ export default function Home() {
             <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Manish Sonkar"
-              title="Sr. Partner"
+              title="Sr Partner"
               imageSrc="/images/manish_sonkar.jpeg"
               linkedinUrl="https://www.linkedin.com/in/manishsonkar/"
               content={
@@ -336,7 +336,7 @@ export default function Home() {
             <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Pradeep Panwar"
-              title="Sr. Partner"
+              title="Sr Partner"
               imageSrc="/images/pradeep_panwar.jpeg"
               linkedinUrl="https://www.linkedin.com/in/pradeep-panwar-b881b24/"
               content={
@@ -358,7 +358,7 @@ export default function Home() {
             <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Barendra Sekhar"
-              title="Sr. Partner"
+              title="Sr Partner"
               imageSrc="/images/barendra_sekhar.jpeg"
               linkedinUrl="#"
               content={
@@ -380,7 +380,7 @@ export default function Home() {
             <motion.div variants={leadershipCardVariants}>
             <PartnerProfile 
               name="Rajasekhar Sanka"
-              title="Sr. Partner"
+              title="Sr Partner"
               imageSrc="/images/rajasekhar_sanka.png"
               linkedinUrl="#"
               content={
