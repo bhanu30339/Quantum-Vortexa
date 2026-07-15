@@ -38,13 +38,13 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 h-[112px] flex items-center justify-between">
-        <Link href="/" className="flex items-center group -ml-2 md:-ml-6 lg:-ml-8">
-          <div className="relative w-[340px] h-[100px]">
+        <Link href="/" className="flex items-center group md:-ml-2 lg:-ml-2 shrink-0">
+          <div className="relative w-[180px] sm:w-[220px] md:w-[260px] h-[70px] sm:h-[80px] md:h-[100px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
               fill 
-              className="object-contain drop-shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(124,58,237,0.4)] transition-all"
+              className="object-contain object-left drop-shadow-[0_0_15px_rgba(59,130,246,0.2)] group-hover:drop-shadow-[0_0_25px_rgba(124,58,237,0.4)] transition-all"
             />
           </div>
         </Link>
