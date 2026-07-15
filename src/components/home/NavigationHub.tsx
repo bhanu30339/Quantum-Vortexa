@@ -65,6 +65,7 @@ export default function NavigationHub() {
               src={portal.img}
               alt={portal.title}
               fill
+              unoptimized
               className="object-cover transition-transform duration-1000 group-hover:scale-105 filter grayscale-[30%]"
             />
             

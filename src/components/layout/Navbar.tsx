@@ -38,8 +38,8 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 h-[112px] flex items-center justify-between">
-        <Link href="/" className="flex items-center group">
-          <div className="relative w-[300px] h-[90px]">
+        <Link href="/" className="flex items-center group -ml-2 md:-ml-6 lg:-ml-8">
+          <div className="relative w-[340px] h-[100px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
@@ -50,12 +50,12 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 lg:gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.path}
-              className="text-sm font-medium text-gray-300 hover:text-white transition-colors relative group"
+              className="text-base font-semibold text-gray-300 hover:text-white transition-colors relative group tracking-wide"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
@@ -63,7 +63,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={() => setQuoteModalOpen(true)}
-            className="px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-all hover:border-primary/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+            className="px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-base font-semibold transition-all hover:border-primary/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
           >
             Get a Quote
           </button>

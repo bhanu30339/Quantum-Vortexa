@@ -77,20 +77,18 @@ export default function ServicesPage() {
           </p>
         </section>
 
-        {/* Impact Metrics - Modern Strip UI */}
+        {/* Impact Metrics - Modern Bento UI */}
         <section className="mb-24">
-          <div className="rounded-[40px] border border-cyan-400/20 bg-[#0A101C]/80 p-8 md:p-12 backdrop-blur-3xl shadow-[0_0_80px_-20px_rgba(34,211,238,0.15)]">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:divide-x divide-cyan-400/10">
-              {stats.map((stat, i) => (
-                <div key={i} className="flex flex-col items-center text-center px-4 group">
-                  <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-3xl bg-cyan-400/10 text-cyan-400 transition-transform duration-500 group-hover:scale-110 group-hover:bg-cyan-400/20">
-                    <stat.icon className="h-8 w-8" />
-                  </div>
-                  <h4 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-2">{stat.value}</h4>
-                  <p className="text-sm font-bold uppercase tracking-widest text-cyan-300/70">{stat.label}</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {stats.map((stat, i) => (
+              <div key={i} className="flex flex-col items-center justify-center p-8 rounded-[32px] border border-cyan-400/10 bg-white/[0.02] backdrop-blur-xl shadow-lg group transition-all duration-300 hover:-translate-y-2 hover:border-cyan-400/40 hover:bg-white/5">
+                <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-400/20 text-cyan-400 transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  <stat.icon className="h-8 w-8" />
                 </div>
-              ))}
-            </div>
+                <h4 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-3 text-center">{stat.value}</h4>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400 text-center opacity-80">{stat.label}</p>
+              </div>
+            ))}
           </div>
         </section>
 

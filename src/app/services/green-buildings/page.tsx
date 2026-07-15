@@ -143,7 +143,7 @@ export default function GreenBuildingsPage() {
         </section>
 
         {/* THE CERTIFICATION JOURNEY */}
-        <section className="mb-40 relative">
+        <section className="relative">
           <div className="absolute inset-0 bg-gradient-to-b from-emerald-950/20 to-transparent rounded-[3rem] -mx-6 md:mx-0 pointer-events-none" />
           <div className="relative z-10 p-6 md:p-16">
             <div className="text-center max-w-3xl mx-auto mb-20">

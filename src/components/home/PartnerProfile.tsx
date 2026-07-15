@@ -111,7 +111,7 @@ export default function PartnerProfile({ name, title, imageSrc, content, linkedi
                 </button>
   
                 {/* Image Section */}
-                <div className="w-full md:w-2/5 h-48 sm:h-64 md:h-auto shrink-0 relative bg-zinc-900 border-b md:border-b-0 md:border-r border-white/10">
+                <div className="w-full md:w-2/5 h-72 sm:h-80 md:h-auto shrink-0 relative bg-zinc-900 border-b md:border-b-0 md:border-r border-white/10">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10 mix-blend-overlay" />
                   <Image 
                     src={imageSrc}
