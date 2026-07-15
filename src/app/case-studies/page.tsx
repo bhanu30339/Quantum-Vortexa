@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
   Sparkles,
@@ -159,6 +159,17 @@ export default function CaseStudiesPage() {
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedStudy, setSelectedStudy] = useState<any | null>(null);
 
+  useEffect(() => {
+    if (selectedStudy) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedStudy]);
+
   const filtered =
     activeFilter === "All"
       ? caseStudies
@@ -302,7 +313,7 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="fixed left-1/2 top-1/2 z-[110] w-full max-w-4xl -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6"
+              className="fixed left-1/2 top-1/2 z-[110] w-full max-w-3xl -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6"
             >
               <div className="relative flex max-h-[90vh] flex-col overflow-hidden rounded-[32px] border border-white/10 bg-[#070B14] shadow-2xl">
                 
