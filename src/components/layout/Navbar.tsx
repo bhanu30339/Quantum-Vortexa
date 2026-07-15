@@ -51,9 +51,9 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm" : "bg-transparent"
       } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <div className="container mx-auto px-6 h-[140px] flex items-center justify-between">
+      <div className="container mx-auto px-6 h-[160px] md:h-[180px] flex items-center justify-between">
         <Link href="/" className="flex items-center group md:-ml-2 lg:-ml-2 shrink-0">
-          <div className="relative w-[240px] sm:w-[300px] md:w-[360px] h-[90px] sm:h-[110px] md:h-[130px]">
+          <div className="relative w-[300px] sm:w-[380px] md:w-[450px] h-[120px] sm:h-[140px] md:h-[160px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
