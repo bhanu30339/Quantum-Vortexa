@@ -16,7 +16,7 @@ const cases = [
     metric: "87%",
     metricLabel: "Risk Reduction",
     link: "/case-studies",
-    image: "https://images.pexels.com/photos/5380642/pexels-photo-5380642.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1260&h=750",
     imgBg: "bg-cyan-900/40",
   },
   {
@@ -28,7 +28,7 @@ const cases = [
     metric: "3x",
     metricLabel: "Conversion Lift",
     link: "/case-studies",
-    image: "https://images.pexels.com/photos/583166/pexels-photo-583166.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&q=80&w=1260&h=750",
     imgBg: "bg-purple-900/40",
   },
   {
@@ -40,7 +40,7 @@ const cases = [
     metric: "62%",
     metricLabel: "Less Downtime",
     link: "/case-studies",
-    image: "https://images.pexels.com/photos/3862365/pexels-photo-3862365.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1260&h=750",
     imgBg: "bg-amber-900/40",
   }
 ];

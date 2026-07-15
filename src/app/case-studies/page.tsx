@@ -28,7 +28,7 @@ const caseStudies = [
     icon: ShieldCheck,
     accent: "from-cyan-500 to-blue-600",
     image:
-      "https://images.pexels.com/photos/186461/pexels-photo-186461.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Replaced a legacy perimeter-based network with a Zero Trust architecture, reducing lateral movement risk by 87% while improving employee access speed.",
     metrics: [
@@ -50,7 +50,7 @@ const caseStudies = [
     icon: Brain,
     accent: "from-violet-500 to-purple-600",
     image:
-      "https://images.pexels.com/photos/4498136/pexels-photo-4498136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1555421689-d68471e189f2?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Deployed a real-time recommendation engine across 120+ stores, lifting online conversion by 3x and increasing average order value by 28%.",
     metrics: [
@@ -72,7 +72,7 @@ const caseStudies = [
     icon: Cloud,
     accent: "from-amber-500 to-orange-600",
     image:
-      "https://images.pexels.com/photos/3822622/pexels-photo-3822622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Connected 5,000+ IoT sensors to a cloud-native analytics platform, enabling predictive maintenance that cut unplanned downtime by 62%.",
     metrics: [
@@ -94,7 +94,7 @@ const caseStudies = [
     icon: Database,
     accent: "from-teal-500 to-emerald-600",
     image:
-      "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Migrated 12 business units to S/4HANA with zero downtime, consolidating 7 ERP instances into one and reducing TCO by 35%.",
     metrics: [
@@ -116,7 +116,7 @@ const caseStudies = [
     icon: ShieldCheck,
     accent: "from-emerald-500 to-teal-600",
     image:
-      "https://images.pexels.com/photos/414553/pexels-photo-414553.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Implemented OT/IT segmentation and continuous SCADA monitoring, achieving full compliance with UAE energy sector cybersecurity standards.",
     metrics: [
@@ -138,7 +138,7 @@ const caseStudies = [
     icon: Brain,
     accent: "from-rose-500 to-pink-600",
     image:
-      "https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1260&h=750",
     summary:
       "Built a HIPAA-aligned telemedicine platform with AI triage, serving 50,000+ patients monthly and reducing wait times by 45%.",
     metrics: [
