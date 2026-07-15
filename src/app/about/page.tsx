@@ -96,9 +96,6 @@ export default function AboutPage() {
               </div>
               <h2 className="text-3xl font-bold text-white">{card.title}</h2>
               <p className="mt-5 leading-8 text-gray-400">{card.body}</p>
-              <div className="mt-8 inline-flex items-center gap-2 text-cyan-300">
-                Learn More <ArrowRight size={18}/>
-              </div>
             </div>
           ))}
         </section>
@@ -132,7 +129,7 @@ export default function AboutPage() {
           </div>
 
           <div className="relative overflow-hidden rounded-[36px] border border-white/10">
-            <Image src="/images/about-office.jpg" alt="Office" width={900} height={700} className="h-[500px] w-full object-cover"/>
+            <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Office Headquarters" className="h-[500px] w-full object-cover"/>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"/>
             <div className="absolute bottom-6 left-6 rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-lg">
               <div className="flex items-center gap-3">
