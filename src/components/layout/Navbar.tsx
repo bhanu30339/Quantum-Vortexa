@@ -51,9 +51,9 @@ export default function Navbar() {
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm" : "bg-transparent"
       } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
     >
-      <div className="container mx-auto px-6 h-[112px] flex items-center justify-between">
+      <div className="container mx-auto px-6 h-[140px] flex items-center justify-between">
         <Link href="/" className="flex items-center group md:-ml-2 lg:-ml-2 shrink-0">
-          <div className="relative w-[180px] sm:w-[220px] md:w-[260px] h-[70px] sm:h-[80px] md:h-[100px]">
+          <div className="relative w-[240px] sm:w-[300px] md:w-[360px] h-[90px] sm:h-[110px] md:h-[130px]">
             <Image 
               src="/images/logo.png" 
               alt="Quantum Vortexa Logo" 
@@ -69,7 +69,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.path}
-              className="text-base font-semibold text-gray-300 hover:text-white transition-colors relative group tracking-wide"
+              className="text-lg font-semibold text-gray-300 hover:text-white transition-colors relative group tracking-wide"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
@@ -77,7 +77,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={() => setQuoteModalOpen(true)}
-            className="px-6 py-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-base font-semibold transition-all hover:border-primary/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
+            className="px-8 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-lg font-semibold transition-all hover:border-primary/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
           >
             Get a Quote
           </button>

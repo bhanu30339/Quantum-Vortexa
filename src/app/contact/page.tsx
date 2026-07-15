@@ -88,25 +88,26 @@ export default function ContactPage() {
     },
   });
 
-  const onSubmit = (data: FormValues) => {
+  const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     setSubmitStatus("idle");
-    
     try {
-      const subject = encodeURIComponent(`New Lead: ${data.name} - ${data.serviceInterest}`);
-      const body = encodeURIComponent(`Name: ${data.name}
-Company: ${data.company || 'Not provided'}
-Email: ${data.email}
-Phone: ${data.countryCode} ${data.phone}
-Service Interest: ${data.serviceInterest}
+      const payload = {
+        ...data,
+        phone: `${data.countryCode} ${data.phone}`,
+      };
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-Project Details:
-${data.message}`);
-
-      window.location.href = `mailto:pranay.b@qvortexa.com,info@qvortexa.com?subject=${subject}&body=${body}`;
-      
-      setSubmitStatus("success");
-      reset();
+      if (response.ok) {
+        setSubmitStatus("success");
+        reset();
+      } else {
+        setSubmitStatus("error");
+      }
     } catch {
       setSubmitStatus("error");
     } finally {

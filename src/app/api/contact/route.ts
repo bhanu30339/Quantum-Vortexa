@@ -23,8 +23,8 @@ export async function POST(request: Request) {
       port: 465,
       secure: true,
       auth: {
-        user: "info@qvortexa.com",
-        pass: "",
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
