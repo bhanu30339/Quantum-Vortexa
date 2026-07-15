@@ -6,10 +6,12 @@ import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
+import QuoteModal from "./QuoteModal";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +31,7 @@ export default function Navbar() {
   ];
 
   return (
+    <>
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled ? "bg-background/80 backdrop-blur-md border-b border-border/50 shadow-sm" : "bg-transparent"
@@ -58,12 +61,12 @@ export default function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
-          <Link
-            href="/contact"
+          <button
+            onClick={() => setQuoteModalOpen(true)}
             className="px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white text-sm font-medium transition-all hover:border-primary/50 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]"
           >
             Get a Quote
-          </Link>
+          </button>
         </nav>
 
         {/* Mobile Nav Toggle */}
@@ -94,16 +97,20 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setQuoteModalOpen(true);
+              }}
               className="mt-4 text-center py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-white font-medium"
-              onClick={() => setMobileMenuOpen(false)}
             >
               Get a Quote
-            </Link>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+    <QuoteModal isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} />
+    </>
   );
 }

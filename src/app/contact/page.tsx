@@ -14,8 +14,12 @@ import {
   ShieldCheck,
   MessageSquare,
   Building2,
+  X,
+  ExternalLink,
+  Briefcase,
+  Info,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -55,10 +59,13 @@ const contactCards = [
     ],
   },
   {
+    id: "email",
     icon: Mail,
-    title: "Email",
+    title: "Email Channels",
+    interactive: true,
     lines: [
-      { text: "info@quantumvortexa.ae", href: "mailto:info@quantumvortexa.ae" }
+      { text: "pranay@qvortexa.com" },
+      { text: "info@qvortexa.com" }
     ],
   },
 ];
@@ -66,6 +73,7 @@ const contactCards = [
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [isEmailModalOpen, setIsEmailModalOpen] = useState(false);
 
   const {
     register,
@@ -124,18 +132,19 @@ export default function ContactPage() {
 
         {/* Contact Info Cards */}
         <section className="mb-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {contactCards.map((card) => (
+          {contactCards.map((card: any) => (
             <div
               key={card.title}
-              className="group rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-2 hover:border-cyan-400/40"
+              onClick={() => card.interactive && setIsEmailModalOpen(true)}
+              className={`group rounded-[24px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition hover:-translate-y-2 hover:border-cyan-400/40 ${card.interactive ? "cursor-pointer" : ""}`}
             >
               <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg">
                 <card.icon className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-sm font-bold text-white">{card.title}</h3>
               <div className="mt-2 space-y-1">
-                {card.lines.map((line) => (
-                  'href' in line ? (
+                {card.lines.map((line: any) => (
+                  'href' in line && !card.interactive ? (
                     <a key={line.text} href={line.href} className="block text-sm text-gray-400 hover:text-cyan-400 transition-colors">
                       {line.text}
                     </a>
@@ -144,6 +153,11 @@ export default function ContactPage() {
                   )
                 ))}
               </div>
+              {card.interactive && (
+                <div className="mt-4 flex items-center text-xs text-cyan-400 font-medium opacity-80 transition-opacity group-hover:opacity-100">
+                  View Departments <Sparkles className="ml-1.5 h-3 w-3" />
+                </div>
+              )}
             </div>
           ))}
         </section>
@@ -314,6 +328,81 @@ export default function ContactPage() {
           </div>
         </section>
       </div>
+
+      <AnimatePresence>
+        {isEmailModalOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsEmailModalOpen(false)}
+              className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-md"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="fixed left-1/2 top-1/2 z-[110] w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 p-4 sm:p-6"
+            >
+              <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#070B14] p-6 sm:p-10 shadow-2xl">
+                <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-cyan-500/20 blur-[100px]" />
+                <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-500/20 blur-[100px]" />
+                
+                <button
+                  onClick={() => setIsEmailModalOpen(false)}
+                  className="absolute right-6 top-6 z-10 text-gray-400 hover:text-white transition-colors"
+                >
+                  <X size={24} />
+                </button>
+
+                <div className="relative z-10">
+                  <div className="mb-8 flex items-center gap-3">
+                    <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10">
+                      <Mail className="h-6 w-6 text-cyan-300" />
+                    </div>
+                    <div>
+                      <h2 className="text-2xl font-bold text-white">Email Directory</h2>
+                      <p className="text-sm text-gray-400">Connect with the right department.</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-cyan-400/40 hover:bg-white/10">
+                      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-500/20 text-blue-400">
+                        <Briefcase size={20} />
+                      </div>
+                      <h3 className="mb-1 font-bold text-white">Leadership & Strategy</h3>
+                      <p className="mb-4 text-sm text-gray-400">For executive discussions, acquisitions, and high-level partnerships.</p>
+                      
+                      <a href="mailto:pranay@qvortexa.com" className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300">
+                        pranay@qvortexa.com <ExternalLink size={14} />
+                      </a>
+                    </div>
+                    
+                    <div className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 transition-all hover:border-emerald-400/40 hover:bg-white/10">
+                      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/20 text-emerald-400">
+                        <Info size={20} />
+                      </div>
+                      <h3 className="mb-1 font-bold text-white">General Inquiries</h3>
+                      <p className="mb-4 text-sm text-gray-400">For general questions, platform support, and basic information.</p>
+                      
+                      <a href="mailto:info@qvortexa.com" className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300">
+                        info@qvortexa.com <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div className="mt-6 rounded-2xl border border-white/5 bg-white/5 p-4 text-center">
+                    <p className="text-sm text-gray-400">Looking for a tailored solution? <button onClick={() => { setIsEmailModalOpen(false); window.scrollTo({ top: 400, behavior: "smooth" }) }} className="font-medium text-cyan-400 hover:underline">Request a Callback</button> below.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
     </div>
   );
 }
