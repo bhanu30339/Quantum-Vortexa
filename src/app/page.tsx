@@ -139,18 +139,78 @@ export default function Home() {
       </section>
 
 
-      {/* Trust Marquee */}
-      <section className="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm">
-        <div className="container mx-auto px-6 overflow-hidden">
-          <div className="flex gap-12 items-center justify-between opacity-50 whitespace-nowrap animate-marquee w-max">
-            <span className="text-xl font-bold font-mono">ISO 27001</span>
-            <span className="text-xl font-bold font-mono">SOC 2 COMPLIANT</span>
-            <span className="text-xl font-bold font-mono">UAE PDPL READY</span>
-            <span className="text-xl font-bold font-mono">AWS ADVANCED PARTNER</span>
-            <span className="text-xl font-bold font-mono">SAP SILVER PARTNER</span>
-            {/* Duplicate for infinite scroll effect */}
-            <span className="text-xl font-bold font-mono">ISO 27001</span>
-            <span className="text-xl font-bold font-mono">SOC 2 COMPLIANT</span>
+      {/* Clients Section */}
+      <section className="py-20 border-y border-white/5 bg-gradient-to-b from-black via-white/[0.02] to-black relative overflow-hidden">
+        {/* Abstract background elements */}
+        <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] -translate-y-1/2 pointer-events-none" />
+
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-6">
+              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+              <span className="text-sm font-medium text-gray-300">Trusted Partners</span>
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Empowering Global Innovators</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              We collaborate with visionary enterprises to build resilient, scalable, and secure technological foundations.
+            </p>
+          </motion.div>
+          
+          <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+            <motion.a
+              href="https://www.fortis-corp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9, rotateX: -20 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, type: "spring", stiffness: 100 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 20px 40px -10px rgba(59,130,246,0.2)"
+              }}
+              className="group relative w-full max-w-md h-48 md:h-64 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center p-8 transition-all duration-500"
+              style={{ perspective: "1000px" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Image 
+                src="/images/client 1.jpeg"
+                alt="Fortis Corp"
+                fill
+                className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              />
+            </motion.a>
+
+            <motion.a
+              href="https://www.neoenrg.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9, rotateX: -20 }}
+              whileInView={{ opacity: 1, scale: 1, rotateX: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, type: "spring", stiffness: 100 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ 
+                scale: 1.05, 
+                boxShadow: "0 20px 40px -10px rgba(59,130,246,0.2)"
+              }}
+              className="group relative w-full max-w-md h-48 md:h-64 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center p-8 transition-all duration-500"
+              style={{ perspective: "1000px" }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <Image 
+                src="/images/client 2.jpeg"
+                alt="Neo Energy"
+                fill
+                className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+              />
+            </motion.a>
           </div>
         </div>
       </section>
