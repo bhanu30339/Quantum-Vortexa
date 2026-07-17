@@ -174,18 +174,29 @@ export default function Home() {
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ 
                 scale: 1.05, 
-                boxShadow: "0 20px 40px -10px rgba(59,130,246,0.2)"
               }}
-              className="group relative w-full max-w-md h-48 md:h-64 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center p-8 transition-all duration-500"
+              className="group flex flex-col w-full max-w-md cursor-pointer"
               style={{ perspective: "1000px" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image 
-                src="/images/client 1.jpeg"
-                alt="Fortis Corp"
-                fill
-                className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-              />
+              <div className="relative h-48 md:h-64 w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center transition-all duration-500 mb-6 group-hover:border-primary/50 group-hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.2)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Image 
+                  src="/images/client 1.jpeg"
+                  alt="Fortis Corp"
+                  fill
+                  className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
+              </div>
+              
+              <div className="flex flex-col items-center justify-center relative overflow-hidden">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-400 group-hover:text-white transition-colors duration-500 mb-1">
+                  Fortis Corp
+                </h3>
+                <div className="flex items-center gap-2 text-primary opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  <span className="text-sm font-medium">View Partnership</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
             </motion.a>
 
             <motion.a
@@ -198,18 +209,29 @@ export default function Home() {
               viewport={{ once: true, margin: "-50px" }}
               whileHover={{ 
                 scale: 1.05, 
-                boxShadow: "0 20px 40px -10px rgba(59,130,246,0.2)"
               }}
-              className="group relative w-full max-w-md h-48 md:h-64 rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center p-8 transition-all duration-500"
+              className="group flex flex-col w-full max-w-md cursor-pointer"
               style={{ perspective: "1000px" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Image 
-                src="/images/client 2.jpeg"
-                alt="Neo Energy"
-                fill
-                className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
-              />
+              <div className="relative h-48 md:h-64 w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm flex items-center justify-center transition-all duration-500 mb-6 group-hover:border-primary/50 group-hover:shadow-[0_20px_40px_-10px_rgba(59,130,246,0.2)]">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <Image 
+                  src="/images/client 2.jpeg"
+                  alt="Neo Energy"
+                  fill
+                  className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
+              </div>
+
+              <div className="flex flex-col items-center justify-center relative overflow-hidden">
+                <h3 className="text-xl md:text-2xl font-bold text-gray-400 group-hover:text-white transition-colors duration-500 mb-1">
+                  Neo Energy
+                </h3>
+                <div className="flex items-center gap-2 text-primary opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  <span className="text-sm font-medium">View Partnership</span>
+                  <ArrowRight className="w-4 h-4" />
+                </div>
+              </div>
             </motion.a>
           </div>
         </div>

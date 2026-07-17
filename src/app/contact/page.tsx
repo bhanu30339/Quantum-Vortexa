@@ -45,7 +45,7 @@ const contactCards = [
   },
   {
     icon: Phone,
-    title: "Direct Lines & WhatsApp",
+    title: "Direct Lines",
     lines: [
       { text: "+971 54 456 6332", href: "tel:+971544566332" },
       { text: "+971 58 103 7096", href: "tel:+971581037096" }
