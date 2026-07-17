@@ -24,11 +24,6 @@ export default function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Enterprise-grade technology solutions for the UAE and GCC. Specializing in Cybersecurity, AI, Cloud Architecture, and SAP Services.
             </p>
-            <div className="flex gap-4">
-              <Link href="https://wa.me/971544566332" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-primary/20 hover:text-primary transition-all">
-                WA
-              </Link>
-            </div>
           </div>
 
           <div>
