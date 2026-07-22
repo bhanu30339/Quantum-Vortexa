@@ -184,7 +184,7 @@ export default function Home() {
                   src="/images/client 1.jpeg"
                   alt="Fortis Corp"
                   fill
-                  className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  className="object-contain p-[2px] filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
               </div>
               
@@ -219,7 +219,7 @@ export default function Home() {
                   src="/images/client 2.jpeg"
                   alt="Neo Energy"
                   fill
-                  className="object-contain p-8 md:p-12 filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                  className="object-contain p-[2px] filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
                 />
               </div>
 
